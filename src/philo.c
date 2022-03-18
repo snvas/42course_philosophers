@@ -6,16 +6,16 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/17 20:27:20 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/03/18 13:51:07 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void pickup_fork(t_philo *philo);
-static void eat(t_philo *philo);
-static void sleeping(t_philo *philo);
-static void think(t_philo *philo);
+static void	pickup_fork(t_philo *philo);
+static void	eat(t_philo *philo);
+static void	sleeping(t_philo *philo);
+static void	think(t_philo *philo);
 
 void	*philo(void *argv)
 {
@@ -34,7 +34,7 @@ void	*philo(void *argv)
 	return (NULL);
 }
 
-static void pickup_fork(t_philo *philo)
+static void	pickup_fork(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
 	print_philo_msg(philo, "has taken a fork to the right");
@@ -42,13 +42,13 @@ static void pickup_fork(t_philo *philo)
 	print_philo_msg(philo, "has taken a fork to the left");
 }
 
-static void eat(t_philo *philo)
+static void	eat(t_philo *philo)
 {
-	long long ms;
+	long long	ms;
 
 	pthread_mutex_lock(&philo->lock);
 	gettimeofday(&philo->last_time_to_eat, NULL);
-	ms = time_to_ms(philo->last_time_to_eat) -\
+	ms = time_to_ms(philo->last_time_to_eat) - \
 		time_to_ms(philo->info->create_at);
 	pthread_mutex_lock(&philo->info->finish_mutex);
 	if (!philo->info->finish)
@@ -63,13 +63,13 @@ static void eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->lock);
 }
 
-static void sleeping(t_philo *philo)
+static void	sleeping(t_philo *philo)
 {
 	print_philo_msg(philo, "is sleeping");
 	usleep(philo->info->time_to_sleep * 1000);
 }
 
-static void think(t_philo *philo)
+static void	think(t_philo *philo)
 {
 	print_philo_msg(philo, "is thinking");
 }

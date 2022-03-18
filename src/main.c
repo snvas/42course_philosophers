@@ -6,13 +6,13 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:09:01 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/17 20:25:26 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/03/18 13:51:55 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void join_and_free_philos(t_info *info);
+static void	join_and_free_philos(t_info *info);
 static void	create_philos(t_info *info);
 
 int	main(int argc, char *argv[])
@@ -52,7 +52,7 @@ static void	create_philos(t_info *info)
 	}
 }
 
-static void join_and_free_philos(t_info *info)
+static void	join_and_free_philos(t_info *info)
 {
 	int	i;
 

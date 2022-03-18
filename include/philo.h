@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:02:23 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/17 20:09:19 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/03/18 12:02:18 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void		*monitor(void *argv);
 void		*monitor_each_must_eat(void *argv);
 void		*philo(void *argv);
 void		print_philo_msg(t_philo *philo, char *str);
+int			has_finished(t_info *info);
 
 #endif

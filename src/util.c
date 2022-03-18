@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:11:53 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/17 20:09:08 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/03/18 13:51:37 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_puterror(char *str)
 	s = str;
 	i = 0;
 	while (*s++)
-		i++; /* count the number of characters in str */
+		i++;
 	write(2, str, i);
 	return (1);
 }
@@ -65,7 +65,7 @@ long long	time_to_ms(struct timeval now)
 	return (ms);
 }
 
-void print_philo_msg(t_philo *philo, char *str)
+void	print_philo_msg(t_philo *philo, char *str)
 {
 	long long		ms;
 	struct timeval	now;

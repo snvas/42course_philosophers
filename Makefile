@@ -6,14 +6,14 @@
 #    By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/17 18:14:46 by snovaes           #+#    #+#              #
-#    Updated: 2022/03/17 20:44:42 by snovaes          ###   ########.fr        #
+#    Updated: 2022/03/18 10:56:26 by snovaes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -Werror -pthread -g
 
 RM = rm
 RMFLAGS = -rf
@@ -72,7 +72,7 @@ clean:
 	@printf "$(LF)🧹 $(FG_TEXT)Cleaning $(FG_TEXT_PRIMARY)$(NAME)'s Object files...\n"
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(RMFLAGS) $(NAME)
 	@printf "$(LF)🧹 $(FG_TEXT)Cleaning $(FG_TEXT_PRIMARY)$(NAME)\n$(NO_COLOR)"
 
 re: fclean all
