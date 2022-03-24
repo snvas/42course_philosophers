@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:21:34 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/20 20:22:08 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/03/24 10:19:01 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,14 @@ void	*monitor(void *argv)
 		pthread_mutex_unlock(&philo->check_lock);
 	}
 	return (NULL);
+}
+
+int	has_finished(t_info *info)
+{
+	int	finish;
+
+	pthread_mutex_lock(&info->finish_mutex);
+	finish = info->finish;
+	pthread_mutex_unlock(&info->finish_mutex);
+	return (finish);
 }

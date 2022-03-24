@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:11:53 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/20 19:39:16 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/03/24 10:18:34 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,4 @@ void	print_philo_msg(t_philo *philo, char *str)
 	if (!philo->info->finish)
 		printf("%lld\t%d\t %s\n", milisec, philo->n + 1, str);
 	pthread_mutex_unlock(&philo->info->finish_mutex);
-}
-
-int	has_finished(t_info *info)
-{
-	int	finish;
-
-	pthread_mutex_lock(&info->finish_mutex);
-	finish = info->finish;
-	pthread_mutex_unlock(&info->finish_mutex);
-	return (finish);
 }

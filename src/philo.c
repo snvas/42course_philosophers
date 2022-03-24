@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/22 14:52:46 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/03/24 10:17:31 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*philo(void *argv)
 		if (pickup_fork(philo))
 		{
 			usleep(philo->info->time_to_die * 1000);
-			return NULL;
+			return (NULL);
 		}
 		eat(philo);
 		sleeping(philo);
