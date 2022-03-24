@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:27:15 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/18 11:10:40 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/03/18 14:57:59 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	init_philos(t_info *info)
 	{
 		info->philos[i].n = i;
 		pthread_mutex_init(&info->forks[i], NULL);
-		pthread_mutex_init(&info->philos[i].lock, NULL);
+		pthread_mutex_init(&info->philos[i].check_lock, NULL);
 		if (i == 0)
 			info->philos[i].left_fork = &info->forks[info->num_of_philo - 1];
 		else

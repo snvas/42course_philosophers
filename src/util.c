@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:11:53 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/18 13:51:37 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/03/20 19:39:16 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,32 @@ int	ft_malloc(void *dst, size_t size)
 
 long long	time_to_ms(struct timeval now)
 {
-	long long	ms;
+	long long	milisec;
 
-	ms = now.tv_sec * 1000;
-	ms += now.tv_usec / 1000;
-	return (ms);
+	milisec = now.tv_sec * 1000;
+	milisec += now.tv_usec / 1000;
+	return (milisec);
 }
 
 void	print_philo_msg(t_philo *philo, char *str)
 {
-	long long		ms;
+	long long		milisec;
 	struct timeval	now;
 
 	pthread_mutex_lock(&philo->info->finish_mutex);
 	gettimeofday(&now, NULL);
-	ms = time_to_ms(now) - time_to_ms(philo->info->create_at);
+	milisec = time_to_ms(now) - time_to_ms(philo->info->create_at);
 	if (!philo->info->finish)
-		printf("%lld\t%d\t %s\n", ms, philo->n + 1, str);
+		printf("%lld\t%d\t %s\n", milisec, philo->n + 1, str);
 	pthread_mutex_unlock(&philo->info->finish_mutex);
+}
+
+int	has_finished(t_info *info)
+{
+	int	finish;
+
+	pthread_mutex_lock(&info->finish_mutex);
+	finish = info->finish;
+	pthread_mutex_unlock(&info->finish_mutex);
+	return (finish);
 }
