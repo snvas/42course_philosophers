@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:11:53 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 01:16:48 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/30 02:47:41 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,24 @@ void	print_philo_msg(t_philo *philo, char *str)
 	if (!philo->info->finish)
 		printf("%lld\t%d\t %s\n", milisec, philo->n + 1, str);
 	pthread_mutex_unlock(&philo->info->finish_mutex);
+}
+
+
+void	print_action(t_philo *philo, int action)
+{
+	long	current_time;
+
+	pthread_mutex_lock(philo->info->lock_print);
+	current_time = timenow(philo->info->createat);
+	if (action == TOOK_A_FORK && !has_finished(philo->info))
+		printf("%5ld %3d has taken a fork\n", current_time, philo->n + 1);
+	else if (action == EATING && !has_finished(philo->info))
+		printf("%5ld %3d is eating\n", current_time, philo->n + 1);
+	else if (action == SLEEPING && !has_finished(philo->info))
+		printf("%5ld %3d is sleeping\n", current_time, philo->n + 1);
+	else if (action == THINKING && !has_finished(philo->info))
+		printf("%5ld %3d is thinking\n", current_time, philo->n + 1);
+	else if (action == DIED)
+		printf("%5ld %3d died\n", current_time, philo->n + 1);
+	pthread_mutex_unlock(philo->info->lock_print);
 }
