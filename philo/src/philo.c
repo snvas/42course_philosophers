@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/24 23:33:16 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/29 22:54:50 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ static void	sleeping(t_philo *philo)
 static void	think(t_philo *philo)
 {
 	print_philo_msg(philo, "is thinking");
+	usleep(500);
 }
