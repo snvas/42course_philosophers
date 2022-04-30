@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:27:15 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/18 14:57:59 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/30 03:25:58 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ static int	init_philos(t_info *info)
 	i = 0;
 	pthread_mutex_init(&info->finish_mutex, NULL);
 	if (ft_malloc(&info->philos, sizeof(t_philo) * info->num_of_philo) || \
-		ft_malloc(&info->forks, sizeof(pthread_mutex_t) * info->num_of_philo))
+		ft_malloc(&info->forks, sizeof(pthread_mutex_t) * info->num_of_philo) || \
+		ft_malloc(&info->lock_print, sizeof(pthread_mutex_t)))
 		return (ft_puterror("ERROR: malloc failed\n"));
 	while (i < info->num_of_philo)
 	{
