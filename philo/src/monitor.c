@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:21:34 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 01:52:51 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/30 02:03:34 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	*monitor(void *argv)
 				philo->n + 1, " died");
 			philo->info->finish = 1;
 		}
+		msleep(1);
 		pthread_mutex_unlock(&philo->info->finish_mutex);
 		pthread_mutex_unlock(&philo->check_lock);
 	}
