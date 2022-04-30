@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:11:53 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/24 10:18:34 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/29 23:37:51 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ int	ft_malloc(void *dst, size_t size)
 	return (0);
 }
 
+void msleep(int time_in_ms)
+{
+	long	start_time;
+	start_time = timestamp();
+	while (timestamp() - start_time < (long)time_in_ms)
+		usleep(10);
+}
+
 long long	time_to_ms(struct timeval now)
 {
 	long long	milisec;
@@ -63,6 +71,19 @@ long long	time_to_ms(struct timeval now)
 	milisec = now.tv_sec * 1000;
 	milisec += now.tv_usec / 1000;
 	return (milisec);
+}
+
+long timestamp(void)
+{
+	struct timeval	now;
+
+	gettimeofday(&now, NULL);
+	return (time_to_ms(now));
+}
+
+long timenow(long firstamp)
+{
+	return (timestamp() - firstamp);
 }
 
 void	print_philo_msg(t_philo *philo, char *str)
