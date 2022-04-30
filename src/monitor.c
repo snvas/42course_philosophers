@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:21:34 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/24 10:19:01 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/29 21:40:10 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*monitor_each_must_eat(void *argv)
 	while (!has_finished(info))
 	{
 		pthread_mutex_lock(&info->finish_mutex);
-		if (info->num_of_eat_finish_philo == info->num_of_philo)
+		if (info->num_of_philo_finished_eat == info->num_of_philo)
 			info->finish = 1;
 		pthread_mutex_unlock(&info->finish_mutex);
 	}
@@ -51,6 +51,7 @@ void	*monitor(void *argv)
 		pthread_mutex_unlock(&philo->info->finish_mutex);
 		pthread_mutex_unlock(&philo->check_lock);
 	}
+	printf("finished: %d\n", philo->n + 1);
 	return (NULL);
 }
 

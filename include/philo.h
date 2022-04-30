@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:02:23 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/24 10:26:11 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/24 23:33:01 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_philo
 typedef struct s_info
 {
 	int				num_of_philo;
-	int				num_of_eat_finish_philo;
+	int				num_of_philo_finished_eat;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;

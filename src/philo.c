@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/24 10:17:31 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/24 23:33:16 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	eat(t_philo *philo)
 		printf("%lld\t%d\t %s\n", ms, philo->n + 1, "is eating");
 	philo->num_of_eat += 1;
 	if (philo->num_of_eat == philo->info->num_of_must_eat)
-		philo->info->num_of_eat_finish_philo += 1;
+		philo->info->num_of_philo_finished_eat += 1;
 	pthread_mutex_unlock(&philo->info->finish_mutex);
 	usleep(philo->info->time_to_eat * 1000);
 	pthread_mutex_unlock(philo->right_fork);

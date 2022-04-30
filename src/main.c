@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:09:01 by snovaes           #+#    #+#             */
-/*   Updated: 2022/03/20 19:26:21 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/28 18:47:19 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,15 @@ static void	join_and_free_philos(t_info *info)
 	while (i < info->num_of_philo)
 	{
 		pthread_join(info->philos[i].th_id, NULL);
-		pthread_mutex_destroy(&info->philos[i++].check_lock);
+		pthread_mutex_destroy(&info->philos[i].check_lock);
+		i++;
 	}
 	free(info->philos);
 	i = 0;
 	while (i < info->num_of_philo)
-		pthread_mutex_destroy(&info->forks[i++]);
+	{
+		pthread_mutex_destroy(&info->forks[i]);
+		i++;
+	}
 	free(info->forks);
 }
