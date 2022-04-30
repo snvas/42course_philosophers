@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:02:23 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 02:48:00 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/05/01 01:31:28 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_philo
 	pthread_t		th_id;
 	struct s_info	*info;
 	struct timeval	last_time_to_eat;
-	long			lasttimetoeat;
+	long long		lasttimetoeat;
 }	t_philo;
 
 typedef struct s_info
@@ -53,7 +53,7 @@ typedef struct s_info
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
 	struct timeval	create_at;
-	long			createat;
+	long long		createat;
 }	t_info;
 
 int			ft_puterror(char *str);

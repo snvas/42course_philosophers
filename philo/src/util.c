@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:11:53 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 03:47:55 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/05/01 00:37:09 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ int	ft_malloc(void *dst, size_t size)
 
 void msleep(int time_in_ms)
 {
-	long long	start_time;
-	start_time = timestamp();
-	while (timestamp() - start_time < (long)time_in_ms)
+	long long	end_time;
+	end_time = timestamp() + time_in_ms;
+	while (timestamp() < end_time)
 		usleep(10);
 }
 

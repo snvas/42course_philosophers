@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   monitor.c                                          :+:      :+:    :+:   */
+/*   monitor_original.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:21:34 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 01:24:38 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/05/01 00:45:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	*monitor(void *argv)
 		}
 		pthread_mutex_unlock(&philo->info->finish_mutex);
 		pthread_mutex_unlock(&philo->check_lock);
+		msleep(1);
 	}
-	printf("finished: %d\n", philo->n + 1);
 	return (NULL);
 }
 
