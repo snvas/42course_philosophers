@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/29 23:51:16 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/30 01:01:21 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ void	*philo(void *argv)
 	philo = argv;
 	if (philo->n % 2 == 0)
 		//usleep(philo->info->time_to_eat * 1000);
-		msleep(5);
+		msleep(philo->info->time_to_eat);
 	while (!has_finished(philo->info))
 	{
 		if (pickup_fork(philo))
 		{
-			usleep(philo->info->time_to_die * 1000);
+			//usleep(philo->info->time_to_die * 1000);
+			msleep(philo->info->time_to_die);
 			return (NULL);
 		}
 		eat(philo);
@@ -58,9 +59,10 @@ static void	eat(t_philo *philo)
 	long long	ms;
 
 	pthread_mutex_lock(&philo->check_lock);
-	gettimeofday(&philo->last_time_to_eat, NULL);
-	ms = time_to_ms(philo->last_time_to_eat) - \
-		time_to_ms(philo->info->create_at);
+	//gettimeofday(&philo->last_time_to_eat, NULL);
+	philo->lasttimetoeat = timestamp();
+//	ms = time_to_ms(philo->last_time_to_eat) - time_to_ms(philo->info->create_at);
+	ms = philo->lasttimetoeat - philo->info->createat;	
 	pthread_mutex_lock(&philo->info->finish_mutex);
 	if (!philo->info->finish)
 		printf("%lld\t%d\t %s\n", ms, philo->n + 1, "is eating");
@@ -68,7 +70,8 @@ static void	eat(t_philo *philo)
 	if (philo->num_of_eat == philo->info->num_of_must_eat)
 		philo->info->num_of_philo_finished_eat += 1;
 	pthread_mutex_unlock(&philo->info->finish_mutex);
-	usleep(philo->info->time_to_eat * 1000);
+	//usleep(philo->info->time_to_eat * 1000);
+	msleep(philo->info->time_to_eat);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(&philo->check_lock);
@@ -77,7 +80,8 @@ static void	eat(t_philo *philo)
 static void	sleeping(t_philo *philo)
 {
 	print_philo_msg(philo, "is sleeping");
-	usleep(philo->info->time_to_sleep * 1000);
+	//usleep(philo->info->time_to_sleep * 1000);
+	msleep(philo->info->time_to_sleep);
 }
 
 static void	think(t_philo *philo)

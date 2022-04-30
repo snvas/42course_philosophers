@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:21:34 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 01:52:51 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/30 01:24:38 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,19 @@ void	*monitor(void *argv)
 	t_philo			*philo;
 	struct timeval	now;
 	long long		msec;
-	long long 		current_time;
 
 	philo = argv;
 	while (!has_finished(philo->info))
 	{
 		pthread_mutex_lock(&philo->check_lock);
 		pthread_mutex_lock(&philo->info->finish_mutex);
-//		gettimeofday(&now, NULL);
-		current_time = timestamp();
-//		msec = time_to_ms(now) - time_to_ms(philo->last_time_to_eat);
-		msec = current_time - philo->lasttimetoeat;
 		gettimeofday(&now, NULL);
-		current_time = timestamp();
+		msec = time_to_ms(now) - time_to_ms(philo->last_time_to_eat);
+		gettimeofday(&now, NULL);
 		if (msec >= philo->info->time_to_die && philo->info->finish == 0)
 		{
 			printf("%lld\t%d\t %s\n", \
-				(current_time - philo->info->createat), \
+				time_to_ms(now) - time_to_ms(philo->info->create_at), \
 				philo->n + 1, " died");
 			philo->info->finish = 1;
 		}

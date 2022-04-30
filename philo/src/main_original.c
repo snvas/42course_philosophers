@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:09:01 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 01:43:29 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/04/30 00:28:26 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,22 @@ num of philo, time to die, time to eat, time to sleep\n"));
 static void	create_philos(t_info *info)
 {
 	int			i;
-	pthread_t	monitor_thread;
+	pthread_t	th_id;
 
 	gettimeofday(&info->create_at, NULL);
-	info->createat = timestamp();
 	i = 0;
 	while (i < info->num_of_philo)
 	{
-		info->philos[i].lasttimetoeat = info->createat;
 		info->philos[i].last_time_to_eat = info->create_at;
 		pthread_create(&info->philos[i].th_id, NULL, philo, &info->philos[i]);
-		pthread_create(&monitor_thread, NULL, monitor, &info->philos[i]);
-		pthread_detach(monitor_thread);
+		pthread_create(&th_id, NULL, monitor, &info->philos[i]);
+		pthread_detach(th_id);
 		++i;
 	}
 	if (info->num_of_must_eat != 0)
 	{
-		pthread_create(&monitor_thread, NULL, monitor_each_must_eat, info);
-		pthread_detach(monitor_thread);
+		pthread_create(&th_id, NULL, monitor_each_must_eat, info);
+		pthread_detach(th_id);
 	}
 }
 

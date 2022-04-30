@@ -1,3 +1,4 @@
 .vscode/
 LazyPhilosophersTester/
-test.sh
+test_all.sh
+test_notdie.sh
