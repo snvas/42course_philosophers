@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:21:34 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 05:09:28 by coder            ###   ########.fr       */
+/*   Updated: 2022/05/01 00:52:30 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	*monitor(void *argv)
 			|| philo->info->alone == 1)
 		{
 			now = timenow(philo->info->create_at);
-			printf("%lld\t%d\t %s\n", now, philo->n + 1, " died");
+			printf("%5lld %3d %s\n", now, philo->n + 1, " died");
 			philo->info->finish = 1;
 		}
 		pthread_mutex_unlock(&philo->info->finish_mutex);

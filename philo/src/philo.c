@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 05:19:26 by coder            ###   ########.fr       */
+/*   Updated: 2022/05/01 00:52:24 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	eat(t_philo *philo)
 	ms = philo->last_time_to_eat - philo->info->create_at;
 	pthread_mutex_lock(&philo->info->finish_mutex);
 	if (!philo->info->finish)
-		printf("%3lld %3d %s\n", ms, philo->n + 1, "is eating");
+		printf("%5lld %3d %s\n", ms, philo->n + 1, "is eating");
 	philo->num_of_eat += 1;
 	if (philo->num_of_eat == philo->info->num_of_must_eat)
 		philo->info->had_dinner += 1;
