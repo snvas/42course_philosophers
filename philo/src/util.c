@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:11:53 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 00:37:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/05/01 01:58:03 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ long long timestamp(void)
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-long long timenow(long firstamp)
+long long timenow(long long firstamp)
 {
 	return (timestamp() - firstamp);
 }
@@ -89,11 +89,9 @@ long long timenow(long firstamp)
 void	print_philo_msg(t_philo *philo, char *str)
 {
 	long long		milisec;
-	struct timeval	now;
 
 	pthread_mutex_lock(&philo->info->finish_mutex);
-	gettimeofday(&now, NULL);
-	milisec = time_to_ms(now) - time_to_ms(philo->info->create_at);
+	milisec = timenow(philo->info->create_at);
 	if (!philo->info->finish)
 		printf("%lld\t%d\t %s\n", milisec, philo->n + 1, str);
 	pthread_mutex_unlock(&philo->info->finish_mutex);
@@ -105,7 +103,7 @@ void	print_action(t_philo *philo, int action)
 	long	current_time;
 
 	pthread_mutex_lock(philo->info->lock_print);
-	current_time = timenow(philo->info->createat);
+	current_time = timenow(philo->info->create_at);
 	if (action == TOOK_A_FORK && !has_finished(philo->info))
 		printf("%3ld %3d has taken a fork\n", current_time, philo->n + 1);
 	else if (action == EATING && !has_finished(philo->info))

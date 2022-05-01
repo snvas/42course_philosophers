@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:02:23 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 01:31:28 by coder            ###   ########.fr       */
+/*   Updated: 2022/05/01 01:56:59 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ typedef struct s_philo
 	pthread_mutex_t	check_lock;
 	pthread_t		th_id;
 	struct s_info	*info;
-	struct timeval	last_time_to_eat;
-	long long		lasttimetoeat;
+	long long		last_time_to_eat;
 }	t_philo;
 
 typedef struct s_info
@@ -52,8 +51,7 @@ typedef struct s_info
 	pthread_mutex_t	*lock_print;
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
-	struct timeval	create_at;
-	long long		createat;
+	long long		create_at;
 }	t_info;
 
 int			ft_puterror(char *str);
@@ -67,8 +65,8 @@ void		*monitor_each_must_eat(void *argv);
 void		*philo(void *argv);
 void		print_philo_msg(t_philo *philo, char *str);
 int			has_finished(t_info *info);
-long long		timenow(long firststamp);
-long long		timestamp(void);
+long long	timenow(long long firststamp);
+long long	timestamp(void);
 void		msleep(int time_in_ms);
 void	print_action(t_philo *philo, int action);
 

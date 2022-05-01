@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_original.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:09:01 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 00:28:26 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/05/01 01:55:08 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	create_philos(t_info *info)
 	int			i;
 	pthread_t	th_id;
 
-	gettimeofday(&info->create_at, NULL);
+	info->create_at = timestamp();
 	i = 0;
 	while (i < info->num_of_philo)
 	{

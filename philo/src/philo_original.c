@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 01:22:00 by coder            ###   ########.fr       */
+/*   Updated: 2022/05/01 02:04:30 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static void	eat(t_philo *philo)
 	long long	ms;
 
 	pthread_mutex_lock(&philo->check_lock);
-	gettimeofday(&philo->last_time_to_eat, NULL);
-	ms = time_to_ms(philo->last_time_to_eat) - time_to_ms(philo->info->create_at);
+	philo->last_time_to_eat = timestamp();
+	ms = philo->last_time_to_eat - philo->info->create_at;
 	pthread_mutex_lock(&philo->info->finish_mutex);
 	if (!philo->info->finish)
 		printf("%3lld %3d %s\n", ms, philo->n + 1, "is eating");
