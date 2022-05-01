@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 02:04:30 by coder            ###   ########.fr       */
+/*   Updated: 2022/05/01 02:16:02 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	*philo(void *argv)
 
 	philo = argv;
 	if (philo->n % 2)
-		usleep(5000);
+		usleep(philo->info->time_to_eat);
 	while (!has_finished(philo->info))
 	{
 		if (pickup_fork(philo))
 		{
-			usleep(philo->info->time_to_die * 1001);
+			usleep(philo->info->time_to_die * 1000);
 			return (NULL);
 		}
 		eat(philo);
