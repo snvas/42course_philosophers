@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:27:15 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 03:25:58 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/05/01 04:27:33 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ static int	init_philos(t_info *info)
 		ft_malloc(&info->forks, sizeof(pthread_mutex_t) * info->num_of_philo) || \
 		ft_malloc(&info->lock_print, sizeof(pthread_mutex_t)))
 		return (ft_puterror("ERROR: malloc failed\n"));
+	if (info->num_of_philo == 1)
+		info->alone = 1;
+	else
+		info->alone = 0;
 	while (i < info->num_of_philo)
 	{
 		info->philos[i].n = i;

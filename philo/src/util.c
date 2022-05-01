@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:11:53 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 01:58:03 by coder            ###   ########.fr       */
+/*   Updated: 2022/05/01 04:14:17 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,16 @@ long long timenow(long long firstamp)
 	return (timestamp() - firstamp);
 }
 
-void	print_philo_msg(t_philo *philo, char *str)
-{
-	long long		milisec;
+// void	print_philo_msg(t_philo *philo, char *str)
+// {
+// 	long long		milisec;
 
-	pthread_mutex_lock(&philo->info->finish_mutex);
-	milisec = timenow(philo->info->create_at);
-	if (!philo->info->finish)
-		printf("%lld\t%d\t %s\n", milisec, philo->n + 1, str);
-	pthread_mutex_unlock(&philo->info->finish_mutex);
-}
+// 	pthread_mutex_lock(&philo->info->finish_mutex);
+// 	milisec = timenow(philo->info->create_at);
+// 	if (!philo->info->finish)
+// 		printf("%lld\t%d\t %s\n", milisec, philo->n + 1, str);
+// 	pthread_mutex_unlock(&philo->info->finish_mutex);
+// }
 
 
 void	print_action(t_philo *philo, int action)

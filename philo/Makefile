@@ -6,7 +6,7 @@
 #    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/17 18:14:46 by snovaes           #+#    #+#              #
-#    Updated: 2022/05/01 01:35:42 by coder            ###   ########.fr        #
+#    Updated: 2022/05/01 02:55:06 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,17 +22,11 @@ I_DIR = include
 SRC_DIR = src
 OBJ_DIR = obj
 
-SRC_CODE =	main_original.c \
+SRC_CODE =	main.c \
 			util.c \
 			init.c \
-			monitor_original.c \
-			philo_original.c \
-
-SRC_CODETEST =	main.c \
-				util.c \
-				init.c \
-				monitor.c \
-				philo.c \
+			monitor.c \
+			philo.c \
 
 # ============================================================================ #
 #                                   COLOR                                      #
@@ -55,10 +49,8 @@ LF = \e[1K\r$(NO_COLOR)
 CRLF= \n$(LF)
 
 # ============================================================================ #
-SRC2 = $(addprefix $(SRC_DIR)/,$(SRC_CODETEST))
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_CODE))
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC_CODE:.c=.o))
-OBJS2 = $(addprefix $(OBJ_DIR)/,$(SRC_CODETEST:.c=.o))
 
 .PHONY: clean fclean re
 
@@ -66,10 +58,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -I $(I_DIR) -o $(NAME)
-	@printf "$(LF)🎉 $(FG_TEXT)Successfully Created $(FG_TEXT_PRIMARY)$@!$(FG_TEXT)\n$(NO_COLOR)"
-
-$(NAME)2: $(OBJ_DIR) $(OBJS2)
-	$(CC) $(CFLAGS) $(OBJS2) -I $(I_DIR) -o $(NAME)2
 	@printf "$(LF)🎉 $(FG_TEXT)Successfully Created $(FG_TEXT_PRIMARY)$@!$(FG_TEXT)\n$(NO_COLOR)"
 
 $(OBJ_DIR):

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:02:23 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 02:24:58 by coder            ###   ########.fr       */
+/*   Updated: 2022/05/01 04:21:25 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@
 # define THINKING 4
 # define DIED 5
 
-# define DIE "died"
-# define PICK_FORK "has taken a fork"
-# define EAT "is eating"
-# define SLEEP "is sleeping"
-# define THINK "is thinking"
-
 typedef struct s_philo
 {
 	int				n;
@@ -46,8 +40,9 @@ typedef struct s_philo
 
 typedef struct s_info
 {
+	int				alone;
 	int				num_of_philo;
-	int				num_of_philo_finished_eat;
+	int				had_dinner;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
