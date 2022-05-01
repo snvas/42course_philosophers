@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 00:01:12 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/05/01 05:19:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	pickup_fork(t_philo *philo);
 static void	eat(t_philo *philo);
 static void	sleeping(t_philo *philo);
 static void	think(t_philo *philo);
-static void	*go_eat_alone(t_philo *philo);
 
 void	*philo(void *argv)
 {
@@ -31,23 +30,11 @@ void	*philo(void *argv)
 		return (go_eat_alone(philo));
 	while (!has_finished(philo->info))
 	{
-		if (pickup_fork(philo))
-		{
-		//	usleep(philo->info->time_to_die * 1000);
-			return NULL;	
-		}
+		pickup_fork(philo);
 		eat(philo);
 		sleeping(philo);
 		think(philo);
 	}
-	return (NULL);
-}
-
-static void	*go_eat_alone(t_philo *philo)
-{
-	pthread_mutex_lock(philo->right_fork);
-	print_action(philo, TOOK_A_FORK);
-	pthread_mutex_unlock(philo->right_fork);
 	return (NULL);
 }
 
@@ -77,7 +64,7 @@ static void	eat(t_philo *philo)
 		printf("%3lld %3d %s\n", ms, philo->n + 1, "is eating");
 	philo->num_of_eat += 1;
 	if (philo->num_of_eat == philo->info->num_of_must_eat)
-		philo->info->had_dinner+= 1;
+		philo->info->had_dinner += 1;
 	pthread_mutex_unlock(&philo->info->finish_mutex);
 	msleep(philo->info->time_to_eat);
 	pthread_mutex_unlock(philo->right_fork);

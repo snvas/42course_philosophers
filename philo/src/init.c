@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:27:15 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 04:27:33 by coder            ###   ########.fr       */
+/*   Updated: 2022/05/01 05:36:48 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void		parsing_arg(t_info *info, int argc, char *argv[]);
 static int		check_info(t_info *info, int argc);
 static int		init_philos(t_info *info);
+static int		init_forks(t_info *info);
 
 int	init(t_info *info, int argc, char *argv[])
 {
@@ -53,18 +54,25 @@ static int	check_info(t_info *info, int argc)
 
 static int	init_philos(t_info *info)
 {
-	int	i;
-
-	i = 0;
 	pthread_mutex_init(&info->finish_mutex, NULL);
-	if (ft_malloc(&info->philos, sizeof(t_philo) * info->num_of_philo) || \
-		ft_malloc(&info->forks, sizeof(pthread_mutex_t) * info->num_of_philo) || \
-		ft_malloc(&info->lock_print, sizeof(pthread_mutex_t)))
+	ft_malloc(&info->philos, sizeof(t_philo) * info->num_of_philo);
+	ft_malloc(&info->forks, sizeof(pthread_mutex_t) * info->num_of_philo);
+	ft_malloc(&info->lock_print, sizeof(pthread_mutex_t));
+	if (!info->num_of_philo || !info->forks || !info->lock_print)
 		return (ft_puterror("ERROR: malloc failed\n"));
 	if (info->num_of_philo == 1)
 		info->alone = 1;
 	else
 		info->alone = 0;
+	init_forks(info);
+	return (0);
+}
+
+static int	init_forks(t_info *info)
+{
+	int	i;
+
+	i = 0;
 	while (i < info->num_of_philo)
 	{
 		info->philos[i].n = i;

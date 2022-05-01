@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:02:23 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 23:54:48 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/05/01 05:11:36 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ long long	timenow(long long firststamp);
 long long	timestamp(void);
 void		msleep(int time_in_ms);
 void		print_action(t_philo *philo, int action);
+void		*go_eat_alone(t_philo *philo);
 
 #endif

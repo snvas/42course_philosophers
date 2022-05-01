@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:11:53 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 23:54:43 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/05/01 05:23:33 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,6 @@ int	ft_malloc(void *dst, size_t size)
 		return (1);
 	memset(*(void **)dst, 0, size);
 	return (0);
-}
-
-void msleep(int time_in_ms)
-{
-	long long	end_time;
-	end_time = timestamp() + time_in_ms;
-	while (timestamp() < end_time)
-		usleep(10);
-}
-
-long long timestamp(void)
-{
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-}
-
-long long timenow(long long firstamp)
-{
-	return (timestamp() - firstamp);
 }
 
 void	print_action(t_philo *philo, int action)
