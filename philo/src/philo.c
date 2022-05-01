@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/04/30 23:48:32 by snovaes          ###   ########.fr       */
+/*   Updated: 2022/05/01 00:01:12 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ static void	*go_eat_alone(t_philo *philo)
 	pthread_mutex_lock(philo->right_fork);
 	print_action(philo, TOOK_A_FORK);
 	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_lock(&philo->info->finish_mutex);
-	philo->info->finish = 1;
-	pthread_mutex_unlock(&philo->info->finish_mutex);
 	return (NULL);
 }
 
