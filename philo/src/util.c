@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:11:53 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 04:14:17 by coder            ###   ########.fr       */
+/*   Updated: 2022/04/30 23:54:43 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,6 @@ void msleep(int time_in_ms)
 		usleep(10);
 }
 
-long long	time_to_ms(struct timeval now)
-{
-	long long	milisec;
-
-	milisec = now.tv_sec * 1000;
-	milisec += now.tv_usec / 1000;
-	return (milisec);
-} 
-
 long long timestamp(void)
 {
 	struct timeval	time;
@@ -85,18 +76,6 @@ long long timenow(long long firstamp)
 {
 	return (timestamp() - firstamp);
 }
-
-// void	print_philo_msg(t_philo *philo, char *str)
-// {
-// 	long long		milisec;
-
-// 	pthread_mutex_lock(&philo->info->finish_mutex);
-// 	milisec = timenow(philo->info->create_at);
-// 	if (!philo->info->finish)
-// 		printf("%lld\t%d\t %s\n", milisec, philo->n + 1, str);
-// 	pthread_mutex_unlock(&philo->info->finish_mutex);
-// }
-
 
 void	print_action(t_philo *philo, int action)
 {

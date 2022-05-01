@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:36:14 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 04:29:56 by coder            ###   ########.fr       */
+/*   Updated: 2022/04/30 23:48:32 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*philo(void *argv)
 	{
 		if (pickup_fork(philo))
 		{
-			usleep(philo->info->time_to_die * 1000);
+		//	usleep(philo->info->time_to_die * 1000);
 			return NULL;	
 		}
 		eat(philo);
@@ -48,6 +48,9 @@ static void	*go_eat_alone(t_philo *philo)
 	pthread_mutex_lock(philo->right_fork);
 	print_action(philo, TOOK_A_FORK);
 	pthread_mutex_unlock(philo->right_fork);
+	pthread_mutex_lock(&philo->info->finish_mutex);
+	philo->info->finish = 1;
+	pthread_mutex_unlock(&philo->info->finish_mutex);
 	return (NULL);
 }
 

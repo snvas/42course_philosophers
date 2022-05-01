@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:02:23 by snovaes           #+#    #+#             */
-/*   Updated: 2022/05/01 04:21:25 by coder            ###   ########.fr       */
+/*   Updated: 2022/04/30 23:54:48 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,10 @@ typedef struct s_info
 int			ft_puterror(char *str);
 int			ft_atoi(const char *nptr);
 int			ft_malloc(void *dst, size_t size);
-long long	time_to_ms(struct timeval now);
-
 int			init(t_info *info, int argc, char *argv[]);
 void		*monitor(void *argv);
 void		*monitor_each_must_eat(void *argv);
 void		*philo(void *argv);
-void		print_philo_msg(t_philo *philo, char *str);
 int			has_finished(t_info *info);
 long long	timenow(long long firststamp);
 long long	timestamp(void);
