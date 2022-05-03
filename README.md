@@ -34,3 +34,5 @@ You will have to write one program for the mandatory part and one for the bonus 
 - The status printed should not be scrambled or intertwined with another philosopher’s status.
 - You can’t have more than 10 ms between the death of a philosopher and when it will print its death.
 ### Again, philosophers should avoid dying!
+
+[Funtions Studies](https://github.com/snvas/studies_philo)
